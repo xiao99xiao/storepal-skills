@@ -19,6 +19,12 @@ Once installed, your AI assistant can:
 - Push URLs to App Store Connect using the [ASC CLI](https://asccli.sh)
 - Set up all required App Store pages in one prompt
 
+## Try a complete workflow
+
+[Markdown to hosted URLs: sample files, commands, expected results and cleanup](examples/launch-kit/README.md). Use your own disposable demo app. The examples never require access to another developer’s app.
+
+[Preview the browser launch kit without an account](https://storepal.app/launch-kit?utm_source=github&utm_medium=readme&utm_campaign=launch-kit).
+
 ## Example
 
 ```
