@@ -2,6 +2,10 @@
 
 A 90-second walkthrough after account setup. This example uses your own disposable demo app, never customer apps. Commands below publish sample content immediately. Samples are deliberately labeled as demos; replace them with reviewed app-specific content before using the links in App Store Connect.
 
+## See the result
+
+[StorePal-owned demo privacy page](https://storepal.app/storepal-cli-walkthrough/privacy) · [Demo FAQ](https://storepal.app/storepal-cli-walkthrough/faq) · [Demo update](https://storepal.app/storepal-cli-walkthrough/releases)
+
 ## Setup
 
 1. Create a free StorePal account and a disposable app at https://storepal.app/dashboard/apps/new. Choose a unique URL name. The current CLI does not create apps.
