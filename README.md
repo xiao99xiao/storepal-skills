@@ -23,7 +23,11 @@ Once installed, your AI assistant can:
 
 [Markdown to hosted URLs: sample files, commands, expected results and cleanup](examples/launch-kit/README.md). Use your own disposable demo app. The examples never require access to another developer’s app.
 
-[Preview the browser launch kit without an account](https://storepal.app/launch-kit?utm_source=github&utm_medium=readme&utm_campaign=launch-kit).
+Only need a privacy policy URL? [Start the privacy editor](https://storepal.app/privacy-policy-generator?utm_source=github&utm_medium=readme&utm_campaign=privacy_oct26) with your app name and reviewed policy text. You can edit and preview before signing in; an account is required to publish.
+
+For all five page types, [preview the browser launch kit](https://storepal.app/launch-kit?utm_source=github&utm_medium=readme&utm_campaign=cli_oct26).
+
+Not sure which URL your store listing needs? Read [Privacy Policy URL requirements](https://storepal.app/guides/app-privacy-policy-url?utm_source=github&utm_medium=readme&utm_campaign=privacy_oct26) or [App Store Support URL setup](https://storepal.app/guides/app-store-support-url?utm_source=github&utm_medium=readme&utm_campaign=support_oct26).
 
 ## Example
 
@@ -46,5 +50,5 @@ Once installed, your AI assistant can:
 ## Links
 
 - [StorePal](https://storepal.app)
-- [CLI & Skill Documentation](https://storepal.app/docs/cli)
+- [CLI & Skill Documentation](https://storepal.app/docs/cli?utm_source=github&utm_medium=readme&utm_campaign=cli_oct26)
 - [ASC CLI](https://asccli.sh)
