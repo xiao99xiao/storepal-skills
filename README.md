@@ -16,7 +16,9 @@ Use an AI that can run project commands and load Agent Skills. You can ask that 
 
 Your AI checks the project, helps you sign in or create a free StorePal account, asks for missing facts, and prepares the requested pages. After your confirmation it publishes each page and returns its URL. You do not need to create an app in the dashboard first. These requests are examples: once the Skill is loaded, describe the result you want in your own words. You do not need to name StorePal each time.
 
-The Skill uses StorePal CLI 0.1.2 or newer. Skill installation is free, you use your existing AI, and Free includes up to three apps. No manual API key setup is needed.
+The Skill uses StorePal CLI 0.1.3 or newer. Skill installation is free, you use your existing AI, and Free includes up to three apps. No manual API key setup is needed.
+
+When creating your app, the AI looks for its existing project icon and uploads it too. If the intended icon is unclear, it asks; you can continue without one. You can also ask it to add or replace the icon later. PNG, JPG and WebP icons up to 2 MB work on Free and Pro; other icon formats need to be exported to PNG first. Existing app icons are preserved unless a change is requested or missing branding is being completed.
 
 ## Keep using the same AI
 

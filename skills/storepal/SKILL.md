@@ -5,7 +5,7 @@ description: Prepare and publish an app's privacy policy or terms of service wit
 
 # StorePal
 
-Work in the user's existing app project. Finish the requested outcome: a published page, a support entry, or an in-app What's New prompt. Installing this Skill is only setup. Use the CLI (0.1.2 or newer) with the user's StorePal account. Free accounts can publish pages for up to three apps. The user's existing AI prepares the content; StorePal hosts it. In-app runtime API access requires Pro.
+Work in the user's existing app project. Finish the requested outcome: a published page, a support entry, or an in-app What's New prompt. Installing this Skill is only setup. Use the CLI (0.1.3 or newer) with the user's StorePal account. Free accounts can publish pages for up to three apps, including their app icons. The user's existing AI prepares the content; StorePal hosts it. In-app runtime API access requires Pro.
 
 ## Recognize the user's goal
 
@@ -31,7 +31,9 @@ For other requests, reuse the session and app selection steps below, then follow
    ```sh
    npx --yes storepal@latest apps create --name "App name" --slug app-name --json
    ```
-   Store the selected slug in appropriate project context so later tasks can find the same app. Creating the same owned slug again reuses it without overwriting existing content. A taken slug belonging to another account needs a different name. Do not tell the user to create an app in the dashboard.
+   When creating an app, first look for its existing icon in the current project (for example, an AppIcon asset catalog, manifest, or app branding assets). If the intended icon is unambiguous, append `--icon ./path/to/AppIcon.png`. Use PNG, JPG or WebP up to 2 MB; export SVG, ICNS or ICO to PNG with an available project tool without modifying the source asset. Ask for the intended icon if none is identifiable or several variants could apply; the user may continue without one. Do not invent a logo or choose an unrelated image.
+
+   Store the selected slug in appropriate project context so later tasks can find the same app. Creating the same owned slug again reuses it without overwriting page content. Omitting `--icon` preserves the existing icon; supplying it explicitly applies that icon to the reused app. For an existing app, preserve its current icon unless the user requested a change or is completing missing app branding. A taken slug belonging to another account needs a different name. Do not tell the user to create an app in the dashboard.
 4. For an existing policy, read it before editing. Prepare the requested content from confirmed facts. When the user asks to review before publishing, show the complete text and obtain their confirmation. Keep an already authorized continuous task moving; do not add unrelated pages or store submissions.
 5. Save the reviewed policy as a local Markdown file and publish it:
    ```sh
@@ -63,10 +65,13 @@ Do only the requested task. Support pages with a contact form exist when an app 
 | Task | Command |
 | --- | --- |
 | Read the policy | `npx --yes storepal@latest privacy get --slug app-name --json` |
+| Add/replace an app icon | `npx --yes storepal@latest apps icon set --slug app-name --file ./AppIcon.png --json` |
 | Get hosted URLs | `npx --yes storepal@latest urls --slug app-name` |
 | Read/update terms | `npx --yes storepal@latest terms get --slug app-name` / `terms set --slug app-name --file terms.md` |
 | List/add FAQs | `npx --yes storepal@latest faq list --slug app-name` / `faq add --slug app-name --question "..." --answer "..."` |
 | List/add release notes | `npx --yes storepal@latest releases list --slug app-name` / `releases add --slug app-name --version 1.2 --file release.md` |
+
+Icon uploads work on Free and Pro. The CLI checks the local file before creating an app, compares its hash with the upload response, and reads back the saved icon URL (`icon_verified`); check the image on the hosted page separately. If icon setup fails after app creation, retry the same owned slug and file or run `apps icon set`; do not create another app. Repeating the same file keeps the current icon URL. An icon upload does not modify page content.
 
 For an in-app feedback or contact request, the default simple path is an app entry that opens the hosted support form; this works on Free and does not require a native runtime API key. Reuse the project's existing navigation or browser-opening conventions, add the actual support URL, then identify and check the modified entry and the form. If the user explicitly wants a native form or an existing integration requires one, inspect the matching runtime documentation and plan requirements. Creating a support page does not prove the app was changed. The current CLI has no developer inbox-reading or developer-reply command. Do not promise autonomous feedback processing or background monitoring.
 
