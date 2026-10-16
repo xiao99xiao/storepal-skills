@@ -1,54 +1,36 @@
-# StorePal Agent Skills
+# StorePal Skill
 
-Agent Skills for [StorePal](https://storepal.app) — manage your App Store pages (privacy policy, terms, support, FAQ, release notes) from AI coding assistants.
+Let the AI building your app prepare and publish its privacy policy and terms of service. StorePal hosts each page and gives you a stable URL.
 
-## Install
+## Install it in your project’s AI
 
-```bash
+```sh
 npx skills add xiao99xiao/storepal-skills
 ```
 
-Works with **Claude Code**, **Cursor**, **Windsurf**, and any tool that supports Agent Skills.
+Use an AI that can run project commands and load Agent Skills. You can ask that AI to run the install command for you.
 
-## What it does
+## Then tell your AI
 
-Once installed, your AI assistant can:
+> This app needs a privacy policy and terms of service. Show me the full text first. After I confirm, publish them and give me each page’s URL.
 
-- Create and update privacy policies, terms of service, FAQ, and release notes
-- Get all your public page URLs as JSON
-- Push URLs to App Store Connect using the [ASC CLI](https://asccli.sh)
-- Set up all required App Store pages in one prompt
+Your AI checks the project, helps you sign in or create a free StorePal account, asks for missing facts, and prepares the requested pages. After your confirmation it publishes each page and returns its URL. You do not need to create an app in the dashboard first. These requests are examples: once the Skill is loaded, describe the result you want in your own words. You do not need to name StorePal each time.
 
-## Try a complete workflow
+The Skill uses StorePal CLI 0.1.2 or newer. Skill installation is free, you use your existing AI, and Free includes up to three apps. No manual API key setup is needed.
 
-[Markdown to hosted URLs: sample files, commands, expected results and cleanup](examples/launch-kit/README.md). Use your own disposable demo app. The examples never require access to another developer’s app.
+## Keep using the same AI
 
-Only need a privacy policy URL? [Start the privacy editor](https://storepal.app/privacy-policy-generator?utm_source=github&utm_medium=readme&utm_campaign=privacy_oct26) with your app name and reviewed policy text. You can edit and preview before signing in; an account is required to publish.
+- “We added accounts. Check and update this app’s privacy policy too.”
+- “Prepare this app’s terms of service and a URL. Show me the text first.”
+- “Add a feedback option in the app’s settings so users can send me a message.”
+- “Show users what changed the first time they open the app after an update.”
 
-For all five page types, [preview the browser launch kit](https://storepal.app/launch-kit?utm_source=github&utm_medium=readme&utm_campaign=cli_oct26).
+For the feedback request, your AI adds an app entry that opens the hosted contact form. This works on Free. Messages arrive in your StorePal inbox. The AI checks the app entry and the form separately. StorePal does not run a background AI or automatically submit anything to an app store.
 
-Not sure which URL your store listing needs? Read [Privacy Policy URL requirements](https://storepal.app/guides/app-privacy-policy-url?utm_source=github&utm_medium=readme&utm_campaign=privacy_oct26) or [App Store Support URL setup](https://storepal.app/guides/app-store-support-url?utm_source=github&utm_medium=readme&utm_campaign=support_oct26).
+Terms are a separate page, available on Free. Your AI checks existing content and the app's actual usage conditions, prepares the text, follows your publishing instructions, and returns the verified terms URL.
 
-## Example
+For updates, your AI prepares the version's content and adds the in-app prompt to your project. Users see what changed when they open the app after upgrading. Publishing release content is available on Free; reading it from a running app requires Pro. Your AI checks publishing and app behavior separately; a public release-history URL alone does not complete the in-app prompt.
 
-```
-"Set up privacy policy and terms for my app, then push the URLs to App Store Connect"
-```
+[Privacy-policy example](https://storepal.app/examples/privacy) · [Terms example](https://storepal.app/examples/terms) · [Installation help](https://storepal.app/docs/cli) · [StorePal](https://storepal.app)
 
-## Prerequisites
-
-- A [StorePal](https://storepal.app) account (free)
-- The StorePal CLI: `npx storepal auth login`
-- Optional: [ASC CLI](https://asccli.sh) for App Store Connect integration
-
-## Skills
-
-| Skill | Description |
-|-------|-------------|
-| `storepal` | Manage App Store pages and feedback with the StorePal CLI. Integrates with ASC CLI for pushing URLs to App Store Connect. |
-
-## Links
-
-- [StorePal](https://storepal.app)
-- [CLI & Skill Documentation](https://storepal.app/docs/cli?utm_source=github&utm_medium=readme&utm_campaign=cli_oct26)
-- [ASC CLI](https://asccli.sh)
+For a command-level reference, see the [Skill](skills/storepal/SKILL.md). The [sample Markdown files](examples/launch-kit) are for disposable demo apps.
