@@ -5,7 +5,7 @@ description: Prepare and publish an app's privacy policy or terms of service wit
 
 # StorePal
 
-Work in the user's existing app project. Finish the requested outcome: a published page, a support entry, or an in-app What's New prompt. Installing this Skill is only setup. Use the CLI (0.1.3 or newer) with the user's StorePal account. Free accounts can publish pages for up to three apps, including their app icons. The user's existing AI prepares the content; StorePal hosts it. In-app runtime API access requires Pro.
+Work in the user's existing app project. Finish the requested outcome: a published page, a support entry, or an in-app What's New prompt. Installing this Skill is only setup. Use the CLI (0.1.3 or newer) with the user's StorePal account. Free accounts can publish pages for up to five apps, including their app icons. The user's existing AI prepares the content; StorePal hosts it. Every feature, including runtime API access, attachments, webhooks and in-app update prompts, is included on Free. Pro only adds unlimited apps.
 
 ## Recognize the user's goal
 
@@ -73,7 +73,7 @@ Do only the requested task. Support pages with a contact form exist when an app 
 
 Icon uploads work on Free and Pro. The CLI checks the local file before creating an app, compares its hash with the upload response, and reads back the saved icon URL (`icon_verified`); check the image on the hosted page separately. If icon setup fails after app creation, retry the same owned slug and file or run `apps icon set`; do not create another app. Repeating the same file keeps the current icon URL. An icon upload does not modify page content.
 
-For an in-app feedback or contact request, the default simple path is an app entry that opens the hosted support form; this works on Free and does not require a native runtime API key. Reuse the project's existing navigation or browser-opening conventions, add the actual support URL, then identify and check the modified entry and the form. If the user explicitly wants a native form or an existing integration requires one, inspect the matching runtime documentation and plan requirements. Creating a support page does not prove the app was changed. The current CLI has no developer inbox-reading or developer-reply command. Do not promise autonomous feedback processing or background monitoring.
+For an in-app feedback or contact request, the default simple path is an app entry that opens the hosted support form; this works on Free and does not require a native runtime API key. Reuse the project's existing navigation or browser-opening conventions, add the actual support URL, then identify and check the modified entry and the form. If the user explicitly wants a native form or an existing integration requires one, inspect the matching runtime documentation and app-scoped credentials. Creating a support page does not prove the app was changed. The current CLI has no developer inbox-reading or developer-reply command. Do not promise autonomous feedback processing or background monitoring.
 
 ## Show what's new after an app update
 
@@ -81,12 +81,12 @@ The main outcome is that users see the changes inside the app after upgrading. A
 
 1. Establish the target version and change range from the project; ask if ambiguous. Summarize user-visible changes from confirmed work. Check existing releases before publishing so a retry does not add a duplicate. If the user only requested content, finish that request without adding an app integration.
 2. When asked for the in-app prompt, inspect the platform, existing startup flow, and any installed StorePal integration. Use the matching SDK or API documentation; do not assume a macOS SDK works on every platform. For the API, request the installed app version with `GET /api/v1/releases?version=<version>` and the app's selected language, rather than displaying an unrelated latest release.
-3. Explain that in-app runtime access requires Pro; verify availability before adding a dependency on it. Publishing release content through the CLI remains available on Free. Use an app-scoped `sp_live_` credential via the project's existing configuration workflow. Never embed the account-wide `sp_user_` CLI credential in an app, print tokens, or purchase a plan without authorization.
+3. In-app runtime access and publishing release content are included on every plan. Verify the app integration before reporting that it works. Use an app-scoped `sp_live_` credential via the project's existing configuration workflow. Never embed the account-wide `sp_user_` CLI credential in an app, print tokens, or purchase a plan without authorization.
 4. Make the project change so the prompt appears once after upgrading, skips the first install, and does not block startup if content is unavailable. Follow existing app conventions for presenting and dismissing it. Fetching or dismissing the same version must not cause repeated prompts on every launch.
 5. Check the published content and the app behavior separately. Verify an upgrade, another launch on the same version, a first install, and missing or unreachable content when the environment allows. A successful content publish or API read is not proof of an in-app prompt. Report what was implemented and checked, and any remaining integration step. Lead the result with the user-visible behavior, not the public URL.
 
 ## Access and external stores
 
-The local `sp_user_` credential manages all apps in the StorePal account and works on Free and Pro. It is distinct from a Pro-only `sp_live_` key for native runtime integration. Install and login do not buy a subscription or authorize App Store Connect.
+The local `sp_user_` credential manages all apps in the StorePal account and works on Free and Pro. It is distinct from an app-scoped `sp_live_` key for native runtime integration. Install and login do not buy a subscription or authorize App Store Connect.
 
 Only update App Store Connect when the user requests it and an authorized store tool is available. Use that tool's current documentation for field mappings. Returning a StorePal URL does not mean store metadata was updated.
